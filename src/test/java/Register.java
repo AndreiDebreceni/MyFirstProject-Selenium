@@ -1,8 +1,10 @@
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Register {
+    @Test
     public void register() {
         System.setProperty("webdriver.chrome.driver", "Resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
@@ -17,6 +19,8 @@ public class Register {
         driver.findElement(By.id("confirmation")).sendKeys("Zipcode1");
         driver.findElement(By.id("is_subscribed")).click();
         driver.findElement(By.cssSelector("#form-validate > div.buttons-set > button > span > span")).click();
+
+
         driver.quit();
 
 

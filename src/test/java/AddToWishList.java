@@ -1,9 +1,11 @@
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class AddToWishList {
 
+    @Test
     public void addToWish() {
         System.setProperty("webdriver.chrome.driver","Resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
