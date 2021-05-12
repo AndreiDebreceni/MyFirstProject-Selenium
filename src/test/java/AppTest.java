@@ -21,8 +21,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
     @org.junit.Test
     public void loginWithValidCredentials() {
         driver.get("http://testfasttrackit.info/selenium-test/");
-        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
+        driver.findElement(By.cssSelector(".skip-account")).click();
+        driver.findElement(By.cssSelector("a[title='Log In']")).click();
         driver.findElement(By.id("email")).sendKeys("dbrdebredbr@gmail.com");
         driver.findElement(By.id("pass")).sendKeys("Zipcode1");
         driver.findElement(By.cssSelector("#send2 > span > span")).click();
@@ -46,8 +46,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
     @org.junit.Test
     public void loginWithoutMandatoryFields() {
         driver.get("http://testfasttrackit.info/selenium-test/");
-        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
+        driver.findElement(By.cssSelector(".skip-account.skip-link > .label")).click();
+        driver.findElement(By.cssSelector("a[title='Log In']")).click();
         driver.findElement(By.cssSelector("#send2 > span > span")).click();
         WebElement emailErrorMessage = driver.findElement(By.id("advice-required-entry-email"));
         Assert.assertEquals("This is a required field.", emailErrorMessage.getText());
@@ -57,8 +57,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
     @org.junit.Test
     public void register() {
             driver.get("http://testfasttrackit.info/selenium-test/");
-            driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
-            driver.findElement(By.cssSelector("#header-account > div > ul > li:nth-child(5) > a")).click();
+            driver.findElement(By.cssSelector(".skip-account.skip-link > .label")).click();
+            driver.findElement(By.cssSelector("a[title='Register']")).click();
             driver.findElement(By.name("firstname")).sendKeys("Debre");
             driver.findElement(By.id("middlename")).sendKeys("DBR");
             driver.findElement(By.id("lastname")).sendKeys("Andrei");
@@ -66,7 +66,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
             driver.findElement(By.id("password")).sendKeys("Zipcode1");
             driver.findElement(By.id("confirmation")).sendKeys("Zipcode1");
             driver.findElement(By.id("is_subscribed")).click();
-            driver.findElement(By.cssSelector("#form-validate > div.buttons-set > button > span > span")).click();
+            driver.findElement(By.cssSelector("button[title='Register'] > span > span")).click();
         WebElement createdText = driver.findElement(By.cssSelector("ul  span"));
         Assert.assertEquals("There is already an account with this email address." +
                 " If you are sure that it is your email address," +
@@ -77,10 +77,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
         @Test
         public void addToWish() {
             driver.get("http://testfasttrackit.info/selenium-test/");
-            driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.std > div.widget.widget-new-products > div.widget-products > ul > li:nth-child(1) > div > h3 > a")).click();
-            driver.findElement(By.cssSelector("#product_addtocart_form > div.product-shop > div.product-options-bottom > ul.add-to-links > li:nth-child(1) > a")).click();
-            WebElement succesMsgText = driver.findElement(By.cssSelector("body > div.wrapper > div.page > div.main-container.col2-left-layout > div > div.col-main > div.my-account > div.my-wishlist > ul > li > ul > li > span"));
-            Assert.assertEquals("Lafayette Convertible Dress has been added to your wishlist. Click here to continue shopping.", succesMsgText.getText());
+            driver.findElement(By.cssSelector(".product-info  a[title='Lafayette Convertible Dress']")).click();
+            driver.findElement(By.cssSelector(".link-wishlist")).click();
+            WebElement succesMsgText = driver.findElement(By.cssSelector("h1"));
+            Assert.assertEquals("LOGIN OR CREATE AN ACCOUNT", succesMsgText.getText());
             Assert.assertTrue(succesMsgText.isDisplayed());
 
         }
